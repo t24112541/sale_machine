@@ -45,5 +45,21 @@ void stock(int total_product){
 }
 void show_product(int total_product){
 	int page_total,unit_page=5,page_stg,page,n_product,old_page;
-	page_total=total_product-(total_product%unit_page)
+	page_total=(total_product-(total_product%unit_page))/unit_page;
+	if((total_product%unit_page)!=0){page_total++;}
+	do{
+		if(tolower(page_stg)=='n'){
+			old_page=page;
+			page+=1;
+			n_product=unit_page*old_page;
+		}else if(tolower(page_stg)=='p'){
+			page-=1;
+			old_page=page-1;
+			n_product=unit_page*old_page;
+		}else{
+			page=1;
+			old_page=0;
+			n_product=0;
+		}
+	}while(tolower(page)!='s');
 }
